@@ -26,23 +26,20 @@ slides.forEach(slide => {
     slide.style.width = width;
 });
 
-    const dots = [];
+const dots = [];
 
 
-    const dotsLi = document.querySelectorall('li');
+const dotsLi = document.querySelectorAll('li');
 
-
-    dotsLi.forEach((dot, i) => {
-        dot.setAttribute('data-slice-to', i + 1);
-        if (i == 0) {
-            dot.style.background = 'black';
-            dot.style.width = '20px';
-            dot.style.height = '20px';
-        }
-        dots.push(dot);
-    });
-
-    
+dotsLi.forEach((dot, i) => {
+    dot.setAttribute('data-slice-to', i + 1);
+    if (i == 0) {
+        dot.style.background = 'black';
+        dot.style.width = '20px';
+        dot.style.height = '20px';
+    }
+    dots.push(dot);
+});
 
 
 
@@ -58,9 +55,8 @@ next.addEventListener('click', (e) => {
 
     slidesField.style.transform = `translateX(-${offset}px)`;
 
-
-
-
+    dots.forEach(dot => dot.style.opacity = '.5');
+    dots[slideIndex - 1].style.opacity = 1;
 });
 
 prev.addEventListener('click', (e) => {
@@ -74,6 +70,7 @@ prev.addEventListener('click', (e) => {
     }
 
     slidesField.style.transform = `translateX(-${offset}px)`;
+
 });
 
 
