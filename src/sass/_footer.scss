@@ -1,0 +1,104 @@
+.footer{
+    min-height: 246px;
+    background: #05141A;
+
+    &__logo{
+        width: 216px;
+        height: 56px;
+
+        img{
+            width: 175px;
+            margin: 0 auto;
+            display: block;
+        }
+    }
+
+    &__icons{
+        display: flex;
+        justify-content: space-between;
+        width: 216px;
+        height: 56px;
+        padding-top: 27.5px;
+    }
+
+    &__social{
+        padding-top: 54px;
+        padding-left: 52px;
+    }
+
+
+    &__block{
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    &__line{
+        width: 530px;
+        height: 20px;
+        color: #fff;
+        display: flex;
+        justify-content: space-between;
+        font-weight: 700;
+        font-size: 16px;
+        padding-top: 72px;
+        padding-bottom: 57px;
+
+        img{
+            width: 9px;
+            height: 9px;
+           padding-top: 5px;
+        }
+    }
+
+    &__center{
+        p{
+            color: #fff;
+            text-align: center;
+        }
+    }
+
+    &__link{
+        color: #fff;
+        text-decoration: none;
+    }
+
+    &__contacts{
+        color: #fff;
+        width: 260px;
+        height: 153px;
+        padding-top: 44px;
+        padding-right: 25px;
+
+        img{
+            width: 19px;
+            height: 19px;
+        }
+    }
+
+    &__contacts-tittle{
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 20px;
+        text-transform: uppercase;
+        opacity: 0.7;
+    }
+
+    &__contact{
+        padding-left: 25px;
+        p{
+            padding-bottom: 6px;
+        }
+
+        p1{
+            opacity: 0.7;
+        }
+    }
+
+    &__block-contacts{
+        text-transform: uppercase;
+        display: flex;
+        padding-top: 23px;
+       
+    }
+}

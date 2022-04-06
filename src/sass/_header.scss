@@ -27,7 +27,7 @@
         background-color: black;
         width: 17px;
         height: 17px;
-        border-radius:100%;
+        border-radius: 100%;
     }
 
 
@@ -39,8 +39,8 @@
         height: 34px;
         justify-content: space-between;
         position: absolute;
-        left: 50%;
-        bottom: 20%;
+        left: 45%;
+        bottom: 10%;
     }
 
     .slider__indicators-dot {
@@ -51,4 +51,112 @@
     }
 
 
+}
+
+.header {
+    position: relative;
+
+    &__block1 {
+        display: flex;
+        justify-content: space-between;
+        position: absolute;
+        z-index: 1;
+        width: 100%;
+        align-items: center;
+    }
+
+    &__logo {
+        width: 100%;
+        max-width: 530px;
+        text-align: center;
+    }
+
+    &__block2 {
+        display: flex;
+        justify-content: space-between;
+        height: 20px;
+        align-items: center;
+
+        a {
+            color: #fff;
+        }
+
+        img {
+            width: 9px;
+            height: 9px;
+        }
+    }
+
+    &__social {
+        display: flex;
+        justify-content: space-between;
+        width: 218px;
+        height: 56px;
+    }
+
+    &__social-items {
+        width: 56px;
+        height: 56px;
+
+    }
+
+    &__tele {
+        display: flex;
+        width: 158px;
+        justify-content: space-between;
+    }
+
+    &__number {
+        color: #fff;
+    }
+
+    &__connect {
+        display: flex;
+        justify-content: space-between;
+        width: 285px;
+        height: 56px;
+        align-items: center;
+    }
+
+    &__stock {
+        width: 100%;
+        max-width: 1278px;
+        min-height: 289px;
+        position: absolute;
+        color: #fff;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 55px;
+        line-height: 67px;
+        text-align: center;
+        z-index: 2;
+        top: 280px;
+        left: 104px;
+    }
+
+    &__sentence {
+        position: absolute;
+        color: #fff;
+        position: absolute;
+        z-index: 2;
+        top: 490px;
+        left: 550px;
+    }
+
+    &__button {
+        display: flex;
+        width: 253px;
+        height: 60px;
+        color: #fff;
+        background: linear-gradient(89.89deg, #60C0BC 0.08%, #4EB5E7 51.42%, #7662A7 101.08%);
+        justify-content: center;
+        align-items: center;
+        border-radius: 5px;
+        font-size: 18px;
+        position: absolute;
+        top: 560px;
+        left: 605px;
+        z-index: 2;
+        cursor: pointer;
+    }
 }

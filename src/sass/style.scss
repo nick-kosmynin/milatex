@@ -1,2 +1,33 @@
 @import 'header';
 @import 'catalog';
+@import 'marketing';
+@import 'comment';
+@import 'footer';
+
+.container {
+    width: 100%;
+    max-width: 1450px;
+    margin: 0 auto;
+}
+
+body {
+    p {
+        margin: 0;
+    }
+
+
+}
+
+h2 {
+    margin: 0;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+h3 {
+    margin: 0;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+}

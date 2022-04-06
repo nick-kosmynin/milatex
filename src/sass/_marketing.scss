@@ -1,0 +1,66 @@
+.marketing {
+    min-height: 731px;
+    background-image: url(../img/marketing/bg.png);
+    margin-top: 107px;
+
+    &__tittle {
+        color: #fff;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 45px;
+        text-transform: uppercase;
+        text-align: center;
+        padding-top: 85px;
+    }
+
+    &__block {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding-top: 30px;
+    }
+
+    &__cube {
+        width: 473px;
+        height: 456px;
+        background: rgba(9, 24, 30, 0.59);
+        border: 1px solid;
+        border-radius: 5px;
+        border-color: grey;
+    }
+
+    &__img {
+        width: 155px;
+        height: 155px;
+        border: 1px solid;
+        border-color: rgba(255, 255, 255, 0.07);
+        border-radius: 50%;
+        position: relative;
+        margin: 0 auto;
+        margin-top: 50px;
+
+        img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+
+    &__block-tittle {
+        margin-top: 40px;
+        text-transform: uppercase;
+        font-weight: 700;
+        font-size: 24px;
+        color: #fff;
+        text-align: center;
+    }
+
+    &__block-subtittle {
+        text-align: center;
+        margin-top: 40px;
+        color: #fff;
+        font-weight: 400;
+        font-size: 18px;
+    }
+}
