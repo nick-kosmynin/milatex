@@ -99,34 +99,146 @@ prev.addEventListener('click', (e) => {
 const frame = document.querySelectorAll('.comment__slide'),
     early = document.querySelector('.comment__arrow-left'),
     later = document.querySelector('.comment__arrow-right'),
-    frameField = document.querySelector('.comment__slider-inner');
+    frameWrapper = document.querySelector('.comment__slider-inner'),
+    frameField = document.querySelector('.comment__slider-window'),
+    lengthh = window.getComputedStyle(frameWrapper).width,
+    commentSlider = document.querySelector('.comment__slider-wrapper');
+
+
+
 
 let frameIndex = 1; // переменная в будущем будет меняться
+// индекс определяющий текущее положение слайда
 
-showFrame(frameIndex);
+let outset = 0;
 
-function showFrame(n) {
-    if (n > frame.length) {
-        frameIndex = 1;
-    }
+// showFrame(frameIndex);
 
-    if (n < 1) {
-        frameIndex = frame.length;
-    }
+// function showFrame(n) {
+//     // в параметр n приходит frameindex
+//     if (n > frame.length) { //количество слайдов
+//         frameIndex = 1;
+//     }
 
-    frame.forEach(item => item.style.display = 'none');
+//     if (n < 1) { // в параметр n приходит frameindex
+//         frameIndex = frame.length;
+//     }
 
-    frame[frameIndex - 1].style.display = 'block';
-}
+//     frame.forEach(item => item.style.display = 'none');
 
-function plusFrame(n) {
-    showFrame(frameIndex += n);
-}
+//     frame[frameIndex - 1].style.display = 'block';
+// }
 
-early.addEventListener('click', () =>{
-    plusFrame(-1);
+// function plusFrame(n) {
+//     showFrame(frameIndex += n);
+// }
+
+frameField.style.width = 100 * frame.length + '%';
+frameField.style.display = 'flex';
+frameField.style.transition = '0.5s all';
+
+frameWrapper.style.overflow = 'hidden';
+
+frame.forEach(slide => {
+    slide.style.width = lengthh;
 });
 
-later.addEventListener('click', ()=>{
-    plusFrame(1);
+commentSlider.style.position = 'relative';
+
+const commentDOTS = [];
+
+for (let i = 0; i < frame.length; i++) {
+    const commentDOT = document.querySelectorAll('.comment__indicators-dot');
+    commentDOT.forEach((dot, i) => {
+        dot.setAttribute('data-slide-to', i + 1);
+
+        if (i == 0) {
+            dot.style.cssText = `
+                background-color: #fff;
+                border: 1px solid #000;
+            `;
+
+        }
+
+        commentDOTS.push(dot);
+    });
+
+
+}
+
+later.addEventListener('click', () => {
+    // plusFrame(1);
+
+
+    if (outset == +lengthh.slice(0, lengthh.length - 2) * (frame.length - 1)) {
+        outset = 0;
+    } else {
+        outset += +lengthh.slice(0, lengthh.length - 2);
+    }
+
+    frameField.style.transform = `translateX(-${outset}px)`;
+
+    commentDOTS.forEach(dot => dot.style.cssText = `
+        border: none;
+        background-color: #4eb5e7;
+    `);
+
+    commentDOTS[frameIndex - 1].style.cssText = `
+    background-color: #fff;
+    border: 1px solid #000;
+    `;
 });
+
+
+early.addEventListener('click', () => {
+    // plusFrame(-1);
+
+    if (outset == 0) {
+        outset = +lengthh.slice(0, lengthh.length - 2) * (frame.length - 1);
+    } else {
+        outset -= +lengthh.slice(0, lengthh.length - 2);
+    }
+
+    frameField.style.transform = `translateX(-${outset}px)`;
+
+    commentDOTS.forEach(dot => dot.style.cssText = `
+        border: none;
+        background-color: #4eb5e7;
+    `);
+
+    commentDOTS[frameIndex - 1].style.cssText = `
+    background-color: #fff;
+    border: 1px solid #000;
+    `;
+});
+
+
+
+
+// showFrame(frameIndex); // в функцию приходит 1 и далее проходит проверку
+
+// function showFrame(n) { // в параметр n приходит frameindex
+//     if (n > frame.length) { //количество слайдов
+//         frameIndex = 1;
+//     }
+
+//     if (n < 1) {    // в параметр n приходит frameindex
+//         frameIndex = frame.length;
+//     }
+
+//     frame.forEach(item => item.style.display = 'none');
+
+//     frame[frameIndex - 1].style.display = 'block';
+// }
+
+// function plusFrame(n) {
+//     showFrame(frameIndex += n);
+// }
+
+// early.addEventListener('click', () => {
+//     plusFrame(-1);
+// });
+
+// later.addEventListener('click', () => {
+//     plusFrame(1);
+// });

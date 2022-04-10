@@ -25,7 +25,8 @@
     }
 
     &__slider-inner{
-        display: flex;
+        display: block;
+        width: 349px;
     }
 
     &__arrow-left{
@@ -53,6 +54,8 @@
         margin: 0 auto;
         padding: 0;
         padding-top: 50px;
+        position: absolute;
+        top: 100%;
     }
 
     &__indicators-dot{
@@ -61,5 +64,6 @@
         border-radius: 100%;
         background-color: #4EB5E7;
     }
+
 
 }
