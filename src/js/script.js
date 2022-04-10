@@ -112,26 +112,24 @@ let frameIndex = 1; // переменная в будущем будет мен�
 
 let outset = 0;
 
-// showFrame(frameIndex);
+showFrame(frameIndex);
 
-// function showFrame(n) {
-//     // в параметр n приходит frameindex
-//     if (n > frame.length) { //количество слайдов
-//         frameIndex = 1;
-//     }
+function showFrame(n) {
+    // в параметр n приходит frameindex
+    if (n > frame.length) { //количество слайдов
+        frameIndex = 1;
+    }
 
-//     if (n < 1) { // в параметр n приходит frameindex
-//         frameIndex = frame.length;
-//     }
+    if (n < 1) { // в параметр n приходит frameindex
+        frameIndex = frame.length;
+    }
 
-//     frame.forEach(item => item.style.display = 'none');
+    
+}
 
-//     frame[frameIndex - 1].style.display = 'block';
-// }
-
-// function plusFrame(n) {
-//     showFrame(frameIndex += n);
-// }
+function plusFrame(n) {
+    showFrame(frameIndex += n);
+}
 
 frameField.style.width = 100 * frame.length + '%';
 frameField.style.display = 'flex';
@@ -167,7 +165,7 @@ for (let i = 0; i < frame.length; i++) {
 }
 
 later.addEventListener('click', () => {
-    // plusFrame(1);
+    plusFrame(1);
 
 
     if (outset == +lengthh.slice(0, lengthh.length - 2) * (frame.length - 1)) {
@@ -191,7 +189,7 @@ later.addEventListener('click', () => {
 
 
 early.addEventListener('click', () => {
-    // plusFrame(-1);
+    plusFrame(-1);
 
     if (outset == 0) {
         outset = +lengthh.slice(0, lengthh.length - 2) * (frame.length - 1);
@@ -213,32 +211,3 @@ early.addEventListener('click', () => {
 });
 
 
-
-
-// showFrame(frameIndex); // в функцию приходит 1 и далее проходит проверку
-
-// function showFrame(n) { // в параметр n приходит frameindex
-//     if (n > frame.length) { //количество слайдов
-//         frameIndex = 1;
-//     }
-
-//     if (n < 1) {    // в параметр n приходит frameindex
-//         frameIndex = frame.length;
-//     }
-
-//     frame.forEach(item => item.style.display = 'none');
-
-//     frame[frameIndex - 1].style.display = 'block';
-// }
-
-// function plusFrame(n) {
-//     showFrame(frameIndex += n);
-// }
-
-// early.addEventListener('click', () => {
-//     plusFrame(-1);
-// });
-
-// later.addEventListener('click', () => {
-//     plusFrame(1);
-// });
