@@ -600,12 +600,65 @@
             </ol>
         </div>
 
+        <button class="comment__btn">оставить отзыв</button>
+
+        <div class="comment__overlay">
+
+            <!-- FORM -->
+            
+            <form action="" class="comment__form">
+                <div class="comment__form-close">&times;</div>
+                <div class="comment__form-tittle">
+                    Вы можете оставить отзыв:
+                </div>
+    
+                <div class="comment__form-line"></div>
+    
+               <div class="comment__form-block">
+                <div class="comment__form-populate">
+                    <div class="comment__form-populate-tittle">
+                        <div class="comment__form-number">1</div>
+                        <div class="comment__form-subtittle">личные данные:</div>
+                    </div>
+    
+                        <input name="name" required placeholder="Фамилия Имя Отчество" type="text">
+                        <input name="E-mail" required placeholder="Ваш E-mail" type="text">
+                        <input name="city" required placeholder="Ваш город" type="text">
+                    
+                </div>
+    
+                <div class="comment__form-populate">
+                    <div class="comment__form-populate-tittle">
+                        <div class="comment__form-number">2</div>
+                        <div class="comment__form-subtittle">ваш отзыв:</div>
+                    </div>
+    
+                    <textarea name="comment" style="resize: none" ></textarea>
+                </div>
+    
+                <div class="comment__form-populate">
+                    <div class="comment__form-populate-tittle">
+                        <div class="comment__form-number">3</div>
+                        <div class="comment__form-subtittle">фото:</div>
+                    </div>
+    
+                    <div class="comment__foto">
+                        <input type="file" name="photo" multiple accept = "image/*, image/jpeg">
+                    </div>
+                </div>
+               </div>
+    
+    
+               <div class="comment__form-sending">
+                <p>*Ваш отзыв  будет опубликован после проверки модератором!</p>
+                <button>отправить отзыв</button>
+               </div>
+            </form>
+        </div>
+
+       
 
 
-
-
-
-        
 
     </div>
 
@@ -655,6 +708,10 @@
             </div>
         </div>
     </footer>
+
+
+
+    
 
 
 

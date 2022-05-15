@@ -124,7 +124,7 @@ function showFrame(n) {
         frameIndex = frame.length;
     }
 
-    
+
 }
 
 function plusFrame(n) {
@@ -211,3 +211,106 @@ early.addEventListener('click', () => {
 });
 
 
+//modal
+
+const modal = document.querySelector('.comment__overlay'),
+    toggleBtn = document.querySelector('.comment__btn'),
+    modalClose = document.querySelector('.comment__form-close');
+
+
+toggleBtn.addEventListener('click', () => {
+    modal.classList.add('show');
+    document.body.style.overflow = 'hidden';
+});
+
+modalClose.addEventListener('click', () => {
+    modal.classList.remove('show');
+    document.body.style.overflow = '';
+});
+
+modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+        modal.classList.remove('show');
+        document.body.style.overflow = '';
+    }
+});
+
+
+//forms
+
+const forms = document.querySelector('form');
+
+const message = {
+    loading: 'Загрузка',
+    success: 'СПАСИБО, ВАШ ОТЗЫВ ОТПРАВЛЕН!',
+    failure: 'Что-то пошло не так...'
+};
+
+
+function postData(form) {
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const statusMessage = document.createElement('div');
+        statusMessage.classList.add('status');
+        statusMessage.textContent = message.loading;
+        form.append(statusMessage);
+
+        const request = new XMLHttpRequest();
+        request.open('POST', 'server.php');
+        // request.setRequestHeader('Content-tupe', 'multipart/form-data');
+
+        const formData = new FormData(form);
+
+        request.send(formData);
+
+        request.addEventListener('load', () => {
+            if (request.status === 200) {
+                console.log(request.response);
+                statusMessage.textContent = message.success;
+                form.reset();
+                setTimeout(() => {
+                    statusMessage.remove();
+                }, 2000);
+            } else {
+                statusMessage.textContent = message.failure;
+            }
+        });
+    });
+}
+
+postData(forms);
+
+function showThanksModal(message) {
+    const prevModalDialog = document.querySelector('.comment__form');
+
+    prevModalDialog.classList.add('hide');
+
+    modal.classList.add('show');
+    document.body.style.overflow = 'hidden';
+
+    const thanksModal = document.createElement('div');
+    thanksModal.classList.add('comment__thanks');
+    thanksModal.innerHTML = `
+    <div class="comment__thanks">
+    <img src="img/comment--icon.png" alt="">
+    <div class="comment__thanks-alarm">
+        ${message}
+    </div>
+
+    <div class="comment__thanks-link">
+        он будет опубликован после проверки модератором!
+    </div>
+    </div>
+    `;
+
+    document.querySelector('.comment__form').append(thanksModal);
+    
+    setTimeout(() =>{
+        thanksModal.remove();
+        prevModalDialog.classList.add('show');
+        prevModalDialog.classList.remove('hide');
+
+        modal.classList.remove('show');
+    },4000);
+}
