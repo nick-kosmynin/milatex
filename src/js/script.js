@@ -247,7 +247,19 @@ const message = {
 };
 
 
-function postData(form) {
+const postData = async (url, data) =>{
+    const res = await fetch(url, {
+        method: "POST",
+        headers: {
+            'Content-tupe': 'multipart/form-data'
+        },
+        body: data
+    });
+
+    return await res.json();
+};
+
+function bindpostData(form) {
     form.addEventListener('submit', (e) => {
         e.preventDefault();
 
@@ -261,13 +273,7 @@ function postData(form) {
 
         const formData = new FormData(form);
 
-        fetch('server.php', {
-                method: "POST",
-                headers: {
-                    'Content-tupe': 'multipart/form-data'
-                },
-                body: formData
-            }).then(data => data.text())
+            postData(' http://localhost:3000/requests', formData)
             .then(data => { // data это те данные которые вернул сервер
                 console.log(data);
                 showThanksModal(message.success);
@@ -282,7 +288,7 @@ function postData(form) {
     });
 }
 
-postData(forms);
+bindpostData(forms);
 
 function showThanksModal(message) {
     const prevModalDialog = document.querySelector('.comment__form');
