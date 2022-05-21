@@ -256,26 +256,29 @@ function postData(form) {
         statusMessage.textContent = message.loading;
         form.append(statusMessage);
 
-        const request = new XMLHttpRequest();
-        request.open('POST', 'server.php');
-        // request.setRequestHeader('Content-tupe', 'multipart/form-data');
+
+
 
         const formData = new FormData(form);
 
-        request.send(formData);
+        fetch('server.php', {
+                method: "POST",
+                headers: {
+                    'Content-tupe': 'multipart/form-data'
+                },
+                body: formData
+            }).then(data => data.text())
+            .then(data => { // data это те данные которые вернул сервер
+                console.log(data);
+                showThanksModal(message.success);
 
-        request.addEventListener('load', () => {
-            if (request.status === 200) {
-                console.log(request.response);
-                statusMessage.textContent = message.success;
+                statusMessage.remove();
+            }).catch(() => {
+                showThanksModal(message.failure);
+            }).finally(() => {
                 form.reset();
-                setTimeout(() => {
-                    statusMessage.remove();
-                }, 2000);
-            } else {
-                statusMessage.textContent = message.failure;
-            }
-        });
+            });
+
     });
 }
 
@@ -304,13 +307,36 @@ function showThanksModal(message) {
     </div>
     `;
 
-    document.querySelector('.comment__form').append(thanksModal);
-    
-    setTimeout(() =>{
-        thanksModal.remove();
-        prevModalDialog.classList.add('show');
-        prevModalDialog.classList.remove('hide');
+    modal.append(thanksModal);
 
+    setTimeout(() => {
+        thanksModal.remove();
         modal.classList.remove('show');
-    },4000);
+        prevModalDialog.classList.remove('hide');
+        document.body.style.overflow = '';
+    }, 2000);
+}
+// ДОСТУП К БАЗЕ ДАННЫХ (DB.JSON) ЧЕРЕЗ JSON.SERVER
+
+fetch('db.json')
+    .then(data => data.json())
+    .then(res => console.log(res));
+
+
+
+function commentModal() {
+
+    const commentParent = document.querySelector('.comment__slide');
+
+    const commentModal = document.createEvent('div');
+    commentModal.classList.add('');
+    commentModal.innerHTML = `
+    <div class="comment__slide-block">
+    <input type="file" name="photo" multiple accept="image/*, image/jpeg">
+    <textarea name="comment" required placeholder="Ваш комментарий"
+    style="resize: none"></textarea>
+    </div>
+    `;
+
+    commentParent.append(commentModal);
 }

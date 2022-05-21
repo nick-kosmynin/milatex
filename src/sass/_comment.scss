@@ -203,11 +203,14 @@
     }
 
     &__thanks {
-        display: none;
-        border: 1px solid #000;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
         width: 517px;
         height: 534px;
-        
+        background-color: #fff;
+
 
         img {
             display: block;
@@ -226,12 +229,16 @@
         padding-top: 50px;
     }
 
-    &__thanks-link{
+    &__thanks-link {
         text-align: center;
         font-weight: 700;
         font-size: 17px;
         text-transform: uppercase;
         padding-top: 50px;
+    }
+
+    &__slide-block{
+        display: flex;
     }
 }
 
